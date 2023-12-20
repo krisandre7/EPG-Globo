@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "551602210386",
+    "project_id": "epg-globo",
+    "storage_bucket": "epg-globo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551602210386:android:585c6981c204be80eec18b",
+        "android_client_info": {
+          "package_name": "com.tpv.epgglobo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLooWIZXCdcVpaMUmBZNI3n_XlgENVfMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
