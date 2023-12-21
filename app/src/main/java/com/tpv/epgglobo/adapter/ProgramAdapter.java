@@ -61,9 +61,6 @@ public class ProgramAdapter extends FirestoreAdapter<ProgramAdapter.ViewHolder> 
 
         public void bind(final DocumentSnapshot snapshot,
                          final OnProgramSelectedListener listener) {
-
-            printDocumentSnapshot(snapshot);
-
             Program program = snapshot.toObject(Program.class);
 
             assert program != null;
@@ -77,26 +74,5 @@ public class ProgramAdapter extends FirestoreAdapter<ProgramAdapter.ViewHolder> 
                 }
             });
         }
-
-        // Your method where you have the DocumentSnapshot
-        public void printDocumentSnapshot(DocumentSnapshot documentSnapshot) {
-            if (documentSnapshot.exists()) {
-                // Get data as a Map
-                Map<String, Object> data = documentSnapshot.getData();
-
-                // Check if data is not null
-                if (data != null) {
-                    // Iterate over the map and print key-value pairs
-                    for (Map.Entry<String, Object> entry : data.entrySet()) {
-                        Log.d("DocumentSnapshot", entry.getKey() + ": " + entry.getValue());
-                    }
-                } else {
-                    Log.d("DocumentSnapshot", "Document data is null.");
-                }
-            } else {
-                Log.d("DocumentSnapshot", "Document does not exist.");
-            }
-        }
-
     }
 }

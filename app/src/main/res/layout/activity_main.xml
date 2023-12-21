@@ -36,7 +36,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/navigate_before"
+                    app:srcCompat="@drawable/ic_navigate_before"
                     app:tint="@color/white" />
 
                 <ImageView
@@ -50,7 +50,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/navigate_next"
+                    app:srcCompat="@drawable/ic_navigate_next"
                     app:tint="@color/white" />
 
                 <TextView
