@@ -21,7 +21,7 @@ import com.tpv.epgglobo.databinding.ActivityMainBinding;
 import java.text.SimpleDateFormat;
 
 public class MainFragment extends Fragment implements
-        ProgramAdapter.OnProgramSelectedListener{
+        ProgramAdapter.OnProgramSelectedListener {
 
     private static final int LIMIT = 50;
 
@@ -47,7 +47,10 @@ public class MainFragment extends Fragment implements
         FirebaseFirestore mFirestore = FirebaseFirestore.getInstance();
 
         // Get ${LIMIT} restaurants
-        mQuery = mFirestore.collectionGroup("programs");
+        mQuery = mFirestore
+                .collection("guides")
+                .document("2023-12-18")
+                .collection("programs");
 
         // RecyclerView
         mAdapter = new ProgramAdapter(mQuery, this) {

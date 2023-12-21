@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import com.google.firebase.Timestamp;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class Program {
@@ -22,10 +23,14 @@ public class Program {
         return name;
     }
 
-    public String getStartTime() {
+    public String getStartTimeStr() {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
 
         return dateFormat.format(startTime.toDate());
+    }
+
+    public Date getStartTime() {
+        return startTime.toDate();
     }
 }
 

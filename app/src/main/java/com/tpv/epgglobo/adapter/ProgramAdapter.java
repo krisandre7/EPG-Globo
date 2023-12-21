@@ -42,6 +42,7 @@ public class ProgramAdapter extends FirestoreAdapter<ProgramAdapter.ViewHolder> 
     }
 
     @Override
+
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.bind(getSnapshot(position), mListener);
     }
@@ -65,7 +66,12 @@ public class ProgramAdapter extends FirestoreAdapter<ProgramAdapter.ViewHolder> 
 
             assert program != null;
             binding.programItemName.setText(program.getName());
-            binding.programItemStartTime.setText(program.getStartTime());
+            binding.programItemStartTime.setText(program.getStartTimeStr());
+
+            // TODO JHONATAS E FHABRICIO
+            binding.programItemAlertBtn.setOnClickListener(v -> {
+//                agendarAlerta(program.getStartTime());
+            });
 
             // Click listener
             itemView.setOnClickListener(view -> {
