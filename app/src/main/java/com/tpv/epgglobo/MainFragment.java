@@ -1,5 +1,6 @@
 package com.tpv.epgglobo;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.tpv.epgglobo.adapter.ProgramAdapter;
 import com.tpv.epgglobo.databinding.ActivityMainBinding;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainFragment extends Fragment implements
         ProgramAdapter.OnProgramSelectedListener {
@@ -47,9 +49,14 @@ public class MainFragment extends Fragment implements
         FirebaseFirestore mFirestore = FirebaseFirestore.getInstance();
 
         // Get ${LIMIT} restaurants
+        Date currentDate = new Date();
+
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("YYY-MM-DD");
+
         mQuery = mFirestore
                 .collection("guides")
-                .document("2023-12-18")
+                .document(dateFormatter.format(currentDate))
                 .collection("programs");
 
         // RecyclerView
