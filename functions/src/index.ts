@@ -8,6 +8,7 @@
  */
 
 import {onRequest} from "firebase-functions/v2/https";
+import {onSchedule} from "firebase-functions/v2/scheduler";
 import axios from "axios";
 import {initializeApp} from "firebase-admin/app";
 import {getFirestore, Timestamp} from "firebase-admin/firestore";
@@ -17,8 +18,8 @@ initializeApp();
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
 
-export const getTodayTvProgramData = onRequest({cors: true},
-    async (request, response) => {
+export const getTodayTvProgramData = onSchedule("every day 00:00",
+    async () => {
         const currentDate = new Date().toISOString().split("T")[0];
         const url = `https://epg-api.video.globo.com/programmes/1337?date=${currentDate}`;
 
@@ -49,13 +50,9 @@ export const getTodayTvProgramData = onRequest({cors: true},
 
             // Commit the batched writes
             await batch.commit();
-
-            response.send("Updated today's current program successfully!");
         } catch (error) {
             console.error("Error retrieving TV program data:", error);
-            response.status(500).send("Internal Server Error");
         }
-        response.end();
     });
 
 export const addRecentPrograms = onRequest({cors: true},
