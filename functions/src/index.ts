@@ -18,10 +18,12 @@ initializeApp();
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
 
-export const getTodayTvProgramData = onSchedule("every day 00:00",
+export const getTomorrowTvProgramData = onSchedule("every day 00:00",
     async () => {
-        const currentDate = new Date().toISOString().split("T")[0];
-        const url = `https://epg-api.video.globo.com/programmes/1337?date=${currentDate}`;
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate()+1);
+        const dateString = tomorrow.toISOString().split("T")[0];
+        const url = `https://epg-api.video.globo.com/programmes/1337?date=${dateString}`;
 
         try {
             const apiResponse = await axios.get(url);
@@ -37,7 +39,7 @@ export const getTodayTvProgramData = onSchedule("every day 00:00",
 
             // Firestore collection reference
             const firestoreCollectionRef =
-                getFirestore().collection(`guides/${currentDate}/programs`);
+                getFirestore().collection(`guides/${tomorrow}/programs`);
 
             // Use batched writes for more efficient Firestore operations
             const batch = getFirestore().batch();
