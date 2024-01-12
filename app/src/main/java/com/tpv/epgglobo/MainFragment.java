@@ -57,7 +57,7 @@ public class MainFragment extends Fragment implements
         mQuery = mFirestore
                 .collection("guides")
                 .document(dateFormatter.format(currentDate))
-                .collection("programs");
+                .collection("programs").orderBy("startTime");
 
         // RecyclerView
         mAdapter = new ProgramAdapter(mQuery, this) {
